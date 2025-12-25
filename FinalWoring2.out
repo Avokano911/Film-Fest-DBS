@@ -1,0 +1,639 @@
+mysql> SELECT CONCAT(P.LastName, P.FirstName) AS FullName,
+    -> COUNT(J.FilmID) AS FilmCounts
+    -> FROM Person P
+    -> JOIN Participates J ON P.PersonID = J.PersonID
+    -> GROUP BY
+    ->      P.PersonID, P.LastName, P.FirstName
+    -> HAVING
+    ->      COUNT(S.FilmID) >= 2;
+ERROR 1054 (42S22): Unknown column 'S.FilmID' in 'having clause'
+mysql> SELECT CONCAT(P.LastName, P.FirstName) AS FullName,
+    -> COUNT(J.FilmID) AS FilmCounts
+    -> FROM Person P
+    -> JOIN Participates J ON P.PersonID = J.PersonID
+    -> GROUP BY
+    ->      P.PersonID, P.LastName, P.FirstName
+    -> HAVING
+    ->      COUNT(J.FilmID) >= 2;
+Empty set (0.00 sec)
+
+mysql> SELECT CONCAT(P.LastName, P.FirstName) AS FullName,
+    -> COUNT(J.FilmID) AS FilmCounts
+    -> FROM Person P
+    -> JOIN Participates J ON P.PersonID = J.PersonID
+    -> GROUP BY
+    ->      P.PersonID, P.LastName, P.FirstName
+    -> HAVING
+    ->      COUNT(J.FilmID) >= 2;
+Empty set (0.00 sec)
+
+mysql> SELECT CONCAT(P.LastName, P.FirstName) AS FullName, COUNT(J.FilmID) AS FilmCounts FROM Person P JOIN Participates J ON P.PersonID = J.PersonID GROUP BY      P.PersonID, P.LastName, P.FirstName HAVING      COUNT(J.FilmID) >= 1;
++-------------------+------------+
+| FullName          | FilmCounts |
++-------------------+------------+
+| WylerWilliam      |          1 |
+| HellmanLillian    |          1 |
+| SchaferRudolph    |          1 |
+| WellesOrson       |          1 |
+| KinugasaTeinosuke |          1 |
+| RossiLusia        |          1 |
+| LindtbergLeopold  |          1 |
+| WilderBilly       |          1 |
+| CeliaJohnson      |          1 |
+| LeanDavid         |          1 |
++-------------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT CONCAT(P.LastName, P.FirstName) AS FullName,
+    -> COUNT(J.FilmID) AS FilmCounts
+    -> FROM Person P
+    -> JOIN Participates J ON P.PersonID = J.PersonID
+    -> GROUP BY
+    ->      P.PersonID, P.LastName, P.FirstName
+    -> HAVING
+    ->      COUNT(J.FilmID) >= 2;
+Empty set (0.01 sec)
+
+mysql> 
+mysql> SELECT F.Name, COUNT(J.FilmID) AS NumOfFilms
+    -> FROM Festival F
+    -> JOIN PArticipates J ON F.FestivslID = P.FestivalID
+    -> GROUP BY F.Name
+    -> GROUP BY NumOfFilms;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY NumOfFilms' at line 5
+mysql>     
+mysql> 
+mysql> SELECT F.Name, COUNT(J.FilmID) AS NumOfFilms
+    -> FROM Festival F
+    -> JOIN PArticipates J ON F.FestivslID = P.FestivalID
+    -> GROUP BY F.Name, NumOfFilms;
+ERROR 1146 (42S02): Table 'Fujishima_21873542.PArticipates' doesn't exist
+mysql> 
+mysql> SELECT F.Name, COUNT(J.FilmID) AS NumOfFilms
+    -> FROM Festival F
+    -> JOIN Participates J ON F.FestivslID = P.FestivalID
+    -> GROUP BY F.Name, NumOfFilms;
+ERROR 1054 (42S22): Unknown column 'F.Name' in 'field list'
+mysql>     
+mysql> SELECT F.F_Name, COUNT(J.FilmID) AS NumOfFilms
+    -> FROM Festival F
+    -> JOIN Participates J ON F.FestivslID = P.FestivalID
+    -> GROUP BY F.Name, NumOfFilms;
+ERROR 1054 (42S22): Unknown column 'F.F_Name' in 'field list'
+mysql> 
+mysql> SELECT F.FestName, COUNT(J.FilmID) AS NumOfFilms
+    -> FROM Festival F
+    -> JOIN Participates J ON F.Fest_ID = J.Fest_ID
+    -> GROUP BY F.FestName, NumOfFilms;
+ERROR 1054 (42S22): Unknown column 'J.Fest_ID' in 'on clause'
+mysql>     SELECT F.FestName, COUNT(J.FilmID) AS NumOfFilms
+    -> FROM Festival F
+    -> JOIN Received R ON F.Fest_ID = R.Fest_ID
+    -> GROUP BY F.FestName, NumOfFilms;
+ERROR 1054 (42S22): Unknown column 'J.FilmID' in 'field list'
+mysql> SELECT F.FestName, COUNT(F.FilmID) AS NumOfFilms
+    -> FROM Festival F
+    -> JOIN Received R ON F.Fest_ID = R.Fest_ID
+    -> GROUP BY F.FestName, NumOfFilms;
+ERROR 1054 (42S22): Unknown column 'F.FilmID' in 'field list'
+mysql> SELECT F.FestName, COUNT(R.FilmID) AS NumOfFilms
+    -> FROM Festival F
+    -> JOIN Received R ON F.Fest_ID = R.Fest_ID
+    -> GROUP BY F.FestName, NumOfFilms;
+ERROR 1056 (42000): Can't group on 'NumOfFilms'
+mysql> SELECT F.FestName, COUNT(R.FilmID) AS NumOfFilms
+    -> FROM Festival F
+    -> JOIN Received R ON F.Fest_ID = R.Fest_ID
+    -> GROUP BY F.FestName
+    -> ORDER BY NumOfFilms;
++----------------------+------------+
+| FestName             | NumOfFilms |
++----------------------+------------+
+| The Oscars           |          2 |
+| Cannes Film Festival |          5 |
++----------------------+------------+
+2 rows in set (0.00 sec)
+
+mysql>     ELECT F.FestName, COUNT(R.FilmID) AS NumOfFilms
+    -> FROM Festival F
+    -> JOIN Received R ON F.Fest_ID = R.Fest_ID
+    -> GROUP BY F.FestName
+    -> ORDER BY NumOfFilms DESC
+    -> LMIT 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ELECT F.FestName, COUNT(R.FilmID) AS NumOfFilms
+FROM Festival F
+JOIN Received R ' at line 1
+mysql> 
+mysql> SELECT F.FestName, COUNT(R.FilmID) AS NumOfFilms
+    -> FROM Festival F
+    -> JOIN Received R ON F.Fest_ID = R.Fest_ID
+    -> GROUP BY F.FestName
+    -> ORDER BY NumOfFilms DESC
+    -> LIMIT 1;
++----------------------+------------+
+| FestName             | NumOfFilms |
++----------------------+------------+
+| Cannes Film Festival |          5 |
++----------------------+------------+
+1 row in set (0.00 sec)
+
+mysql>     
+mysql> SELECT F_Name, Genre FROM Film WHERE YearOfRelease = "1946";
++------------------+-----------------+
+| F_Name           | Genre           |
++------------------+-----------------+
+| Brief Encounter  | Romantic, Drama |
+| The Lost Weekend | Psycho Drama    |
+| The Last Chance  | War,Drama       |
++------------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Show the Person name with iD whoes name includes 'son'
+mysql> 
+mysql> SELECT PersonID, CONCAT(LastName, FirstName) AS Name FROM Person WHERE LastName LIKE '%son%' OR Firstname LIKE '%son%';
++----------+--------------+
+| PersonID | Name         |
++----------+--------------+
+| C1234555 | CeliaJohnson |
+| QQP12345 | WellesOrson  |
++----------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Show the PersonId and Film ID who received award in Cannes Film festival
+mysql> 
+mysql> SELECT PersonID, FilmID FROM Received WHERE Fest_ID = 'A11';
++----------+----------+
+| PersonID | FilmID   |
++----------+----------+
+| C1111234 | FFF21946 |
+| C1111946 | FFF21946 |
+| C1222946 | FFF21946 |
+| C1234567 | FFFF1946 |
+| D1111954 | FFF1954  |
++----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> -- Show the PersonID and Job name who is not director.
+mysql> 
+mysql> SELECT PersonID, JobTitle FROM Worker WHERE JonTitle <> Director;
+ERROR 1054 (42S22): Unknown column 'JonTitle' in 'where clause'
+mysql> 
+mysql> /* Level 2 Use joins and sub-queries with GRUOP BY, ORDER BY, aggreate functions and related clasuses. */
+mysql> 
+mysql> -- Show the name of the person and number of the films who attended the festival more than one (or twice) but no one.
+mysql> 
+mysql> SELECT CONCAT(P.LastName, P.FirstName) AS FullName,
+    -> COUNT(J.FilmID) AS FilmCounts
+    -> FROM Person P
+    -> JOIN Participates J ON P.PersonID = J.PersonID
+    -> GROUP BY
+    ->      P.PersonID, P.LastName, P.FirstName
+    -> HAVING
+    ->      COUNT(S.FilmID) >= 1;
+ERROR 1054 (42S22): Unknown column 'S.FilmID' in 'having clause'
+mysql> 
+mysql> -- Show the name of the festival have highest number of movies award.
+mysql> 
+mysql> SELECT F.Name, COUNT(J.FilmID) AS NumOfAwarded FROM Festival F JOIN Participates J ON F.Fest_ID = J.FestivalID 
+    ->  GROUP BY F.Name ORDER BY NumOfAwarded;
+ERROR 1054 (42S22): Unknown column 'F.Name' in 'field list'
+mysql> 
+mysql> -- Show the name of the id , name whoes the job tile is 'wtiter'
+mysql> 
+mysql> SELECT P.PersonID, (P.Firstname, P.LastName) AS Name, 
+    -> FROM Person P WHERE P.PersonID IN 
+    -> (SELECT W.PersonID FROM Worker W WHERE W.Title = "Writer";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Person P WHERE P.PersonID IN 
+(SELECT W.PersonID FROM Worker W WHERE W.Titl' at line 2
+mysql> 
+mysql> -- Show the festival which has highest participates
+mysql> 
+mysql> SELECT F.FestName, COUNT(R.FilmID) AS NumOfFilms
+    -> FROM Festival F
+    -> JOIN Received R ON F.Fest_ID = R.Fest_ID
+    -> GROUP BY F.FestName
+    -> ORDER BY NumOfFilms DESC 
+    -> LIMIT 1;
++----------------------+------------+
+| FestName             | NumOfFilms |
++----------------------+------------+
+| Cannes Film Festival |          5 |
++----------------------+------------+
+1 row in set (0.00 sec)
+
+mysql>  -- DESC LIMIT shows highest
+mysql> 
+mysql> SELECT F_Name, Genre FROM Film WHERE YearOfRelease = "1946";
++------------------+-----------------+
+| F_Name           | Genre           |
++------------------+-----------------+
+| Brief Encounter  | Romantic, Drama |
+| The Lost Weekend | Psycho Drama    |
+| The Last Chance  | War,Drama       |
++------------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT PersonID, CONCAT(LastName, FirstName) AS Name FROM Person WHERE LastName LIKE '%son%' OR Firstname LIKE '%son%';
++----------+--------------+
+| PersonID | Name         |
++----------+--------------+
+| C1234555 | CeliaJohnson |
+| QQP12345 | WellesOrson  |
++----------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT PersonID, FilmID FROM Received WHERE Fest_ID = 'A11';
++----------+----------+
+| PersonID | FilmID   |
++----------+----------+
+| C1111234 | FFF21946 |
+| C1111946 | FFF21946 |
+| C1222946 | FFF21946 |
+| C1234567 | FFFF1946 |
+| D1111954 | FFF1954  |
++----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT PersonID, JobTitle FROM Worker WHERE JonTitle <> Director;
+ERROR 1054 (42S22): Unknown column 'JonTitle' in 'where clause'
+mysql> 
+mysql> SELECT PersonID, JobTitle FROM Worker WHERE JobTitle <> Director;
+ERROR 1054 (42S22): Unknown column 'Director' in 'where clause'
+mysql> SELECT PersonID, JobTitle FROM Worker WHERE JobTitle <> director;
+ERROR 1054 (42S22): Unknown column 'director' in 'where clause'
+mysql> 
+mysql> SELECT PersonID, JobTitle FROM Worker WHERE JobTitle <> 'director';
++----------+------------------+
+| PersonID | JobTitle         |
++----------+------------------+
+| EE223312 | Writer           |
+| EEEE2345 | Cinematograpgher |
+| QQP12345 | Producer         |
++----------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT CONCAT(P.LastName, P.FirstName) AS FullName,
+    -> COUNT(J.FilmID) AS FilmCounts
+    -> FROM Person P
+    -> JOIN Participates J ON P.PersonID = J.PersonID
+    -> GROUP BY
+    ->      P.PersonID, P.LastName, P.FirstName
+    -> HAVING
+    ->      COUNT(S.FilmID) >= 1;
+ERROR 1054 (42S22): Unknown column 'S.FilmID' in 'having clause'
+mysql> 
+mysql> SELECT CONCAT(P.LastName, P.FirstName) AS FullName,
+    -> COUNT(J.FilmID) AS FilmCounts
+    -> FROM Person P
+    -> JOIN Participates J ON P.PersonID = J.PersonID
+    -> GROUP BY
+    ->      P.PersonID, P.LastName, P.FirstName
+    -> HAVING
+    ->      COUNT(J.FilmID) >= 1;
++-------------------+------------+
+| FullName          | FilmCounts |
++-------------------+------------+
+| WylerWilliam      |          1 |
+| HellmanLillian    |          1 |
+| SchaferRudolph    |          1 |
+| WellesOrson       |          1 |
+| KinugasaTeinosuke |          1 |
+| RossiLusia        |          1 |
+| LindtbergLeopold  |          1 |
+| WilderBilly       |          1 |
+| CeliaJohnson      |          1 |
+| LeanDavid         |          1 |
++-------------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT F.Name, COUNT(J.FilmID) AS NumOfAwarded FROM Festival F JOIN Participates J ON F.Fest_ID = J.FestivalID 
+    ->  GROUP BY F.Name ORDER BY NumOfAwarded;
+ERROR 1054 (42S22): Unknown column 'F.Name' in 'field list'
+mysql> 
+mysql> SELECT F.FestName, COUNT(J.FilmID) AS NumOfAwarded FROM Festival F JOIN Participates J ON F.Fest_ID = J.FestivalID 
+    ->  GROUP BY F.Name ORDER BY NumOfAwarded;
+ERROR 1054 (42S22): Unknown column 'J.FestivalID' in 'on clause'
+mysql> SELECT F.FestName, COUNT(J.FilmID) AS NumOfAwarded FROM Festival F JOIN Participates J ON F.Fest_ID = J.Fest_ID 
+    ->  GROUP BY F.Name ORDER BY NumOfAwarded;
+ERROR 1054 (42S22): Unknown column 'J.Fest_ID' in 'on clause'
+mysql> 
+mysql> SELECT P.PersonID, (P.Firstname, P.LastName) AS Name, 
+    -> FROM Person P WHERE P.PersonID IN 
+    -> (SELECT W.PersonID FROM Worker W WHERE W.Title = "Writer";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Person P WHERE P.PersonID IN 
+(SELECT W.PersonID FROM Worker W WHERE W.Titl' at line 2
+mysql> 
+mysql> SELECT P.PersonID, (P.Firstname, P.LastName) AS Name, 
+    -> FROM Person P WHERE P.PersonID IN 
+    -> (SELECT W.PersonID FROM Worker W WHERE W.Title = "Writer");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Person P WHERE P.PersonID IN 
+(SELECT W.PersonID FROM Worker W WHERE W.Titl' at line 2
+mysql> SELECT P.PersonID, (P.Firstname, P.LastName) AS Name, 
+    -> FROM Person P WHERE P.PersonID IN 
+    -> (SELECT W.PersonID FROM Worker W WHERE W.JobTitle = "Writer");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Person P WHERE P.PersonID IN 
+(SELECT W.PersonID FROM Worker W WHERE W.JobT' at line 2
+mysql> 
+mysql> SELECT P.PersonID, (P.Firstname, P.LastName) AS Name, 
+    -> FROM Person P WHERE P.PersonID IN 
+    -> (SELECT W.PersonID FROM Worker W WHERE W.JobTitle = 'Writer');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Person P WHERE P.PersonID IN 
+(SELECT W.PersonID FROM Worker W WHERE W.JobT' at line 2
+mysql> 
+mysql> SELECT P.PersonID, (P.Firstname, '', P.LastName) AS Name, 
+    -> FROM Person P 
+    -> WHERE P.PersonID IN (
+    ->         SELECT W.PersonID 
+    ->         FROM Worker W 
+    ->         WHERE W.JobTitle = 'Writer'
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Person P 
+WHERE P.PersonID IN (
+        SELECT W.PersonID 
+        FROM Wor' at line 2
+mysql> SELECT
+    ->     P.PersonID,
+    ->     CONCAT(P.FirstName, ' ', P.LastName) AS Name
+    -> FROM
+    ->     Person P
+    -> WHERE
+    ->     P.PersonID IN (
+    ->         SELECT W.PersonID
+    ->         FROM Worker W
+    ->         WHERE W.Title = 'Writer' -- 'JobTitle' を 'Title' に修正
+    ->     );
+ERROR 1054 (42S22): Unknown column 'W.Title' in 'where clause'
+mysql> 
+mysql> SELECT P.PersonID, (P.Firstname, '', P.LastName) AS Name, 
+    -> FROM Person P 
+    -> WHERE P.PersonID IN (
+    ->         SELECT W.PersonID 
+    ->         FROM Worker W 
+    ->         WHERE W.JobTitle = 'Writer'
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Person P 
+WHERE P.PersonID IN (
+        SELECT W.PersonID 
+        FROM Wor' at line 2
+mysql> 
+mysql> SELECT P.PersonID, (P.Firstname, '', P.LastName) AS Name, 
+    -> FROM Person P 
+    -> WHERE P.PersonID IN (
+    ->         SELECT W.PersonID 
+    ->         FROM Worker W 
+    ->         WHERE W.JobTitle = 'Writer'
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Person P 
+WHERE P.PersonID IN (
+        SELECT W.PersonID 
+        FROM Wor' at line 2
+mysql> 
+mysql> SELECT P.PersonID, (P.Firstname, '', P.LastName) AS Name, 
+    -> FROM Person P 
+    -> WHERE P.PersonID IN (
+    ->         SELECT PersonID 
+    ->         FROM Worker 
+    ->         WHERE JobTitle = 'Writer'
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Person P 
+WHERE P.PersonID IN (
+        SELECT PersonID 
+        FROM Worke' at line 2
+mysql> 
+mysql> SELECT P.PersonID, CONCAT(P.Firstname, '', P.LastName) AS Name, 
+    -> FROM 
+    ->        Person P 
+    -> WHERE P.PersonID IN (
+    ->         SELECT W.PersonID 
+    ->         FROM Worker W
+    ->         WHERE W.JobTitle = 'Writer'
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM 
+       Person P 
+WHERE P.PersonID IN (
+        SELECT W.PersonID 
+        ' at line 2
+mysql> 
+mysql> SELECT P.PersonID, CONCAT(P.Firstname, '', P.LastName) AS Name, 
+    -> FROM Person P 
+    -> WHERE P.PersonID IN (
+    ->         SELECT W.PersonID 
+    ->         FROM Worker W
+    ->         WHERE W.JobTitle = 'Writer'
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Person P 
+WHERE P.PersonID IN (
+        SELECT W.PersonID 
+        FROM Wor' at line 2
+mysql> 
+mysql> SELECT F.FestName, COUNT(J.FilmID) AS NumOfAwarded FROM Festival F JOIN Participates J ON F.Fest_ID = J.FestivalID 
+    ->  GROUP BY F.Name ORDER BY NumOfAwarded;
+ERROR 1054 (42S22): Unknown column 'J.FestivalID' in 'on clause'
+mysql> 
+mysql> SELECT F.FestName, COUNT(J.FilmID) AS NumOfAwarded 
+    -> FROM Festival F LEFT OUTER JOIN Participates J ,
+    -> LEFT OUTER JOIN Recieved R ON F.FestID = R.Fest_ID
+    ->  GROUP BY F.Name ORDER BY NumOfAwarderded
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+LEFT OUTER JOIN Recieved R ON F.FestID = R.Fest_ID
+ GROUP BY F.Name ORDER BY N' at line 2
+mysql> SELECT
+    ->     F.FestName,
+    ->     COUNT(R.FilmID) AS NumOfAwarded
+    -> FROM
+    ->     Festival F
+    -> LEFT OUTER JOIN
+    ->     Recieved R ON F.FestID = R.Fest_ID -- Links the festival to the awards received
+    -> GROUP BY
+    ->     F.FestName
+    -> ORDER BY
+    ->     NumOfAwarded DESC;
+ERROR 1146 (42S02): Table 'Fujishima_21873542.Recieved' doesn't exist
+mysql> SHOE TABLES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SHOE TABLES' at line 1
+mysql> SHOW TABLES;
++------------------------------+
+| Tables_in_Fujishima_21873542 |
++------------------------------+
+| Actor                        |
+| Award                        |
+| Festival                     |
+| Film                         |
+| Participates                 |
+| Person                       |
+| Received                     |
+| Worker                       |
++------------------------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT
+    ->     F.FestName,
+    ->     COUNT(R.FilmID) AS NumOfAwarded
+    -> FROM
+    ->     Festival F
+    -> LEFT OUTER JOIN
+    ->     Recieved R ON F.FestID = R.Fest_ID -- Links the festival to the awards received
+    -> GROUP BY
+    ->     F.FestName
+    -> ORDER BY
+    ->     NumOfAwarded DESC;
+ERROR 1146 (42S02): Table 'Fujishima_21873542.Recieved' doesn't exist
+mysql> SELECT
+    -> 
+    ->     F.FestName,
+    -> 
+    ->     COUNT(R.FilmID) AS NumOfAwarded
+    -> 
+    -> FROM
+    -> 
+    ->     Festival F
+    -> 
+    -> LEFT OUTER JOIN
+    -> 
+    ->     Received R ON F.FestID = R.Fest_ID -- Links the festival to the awards received
+    -> 
+    -> GROUP BY
+    -> 
+    ->     F.FestName
+    -> 
+    -> ORDER BY
+    -> 
+    ->     NumOfAwarded DESC;
+ERROR 1054 (42S22): Unknown column 'F.FestID' in 'on clause'
+mysql> SELECT
+    ->     P.PersonID,
+    ->     CONCAT(P.FirstName, ' ', P.LastName) AS Name
+    -> FROM
+    ->     Person P
+    -> WHERE
+    ->     P.PersonID IN (
+    ->         SELECT
+    ->             W.PersonID
+    ->         FROM
+    ->             Worker W
+    ->         WHERE
+    ->             W.JobTitle = 'Writer'
+    ->     );
++----------+-----------------+
+| PersonID | Name            |
++----------+-----------------+
+| EE223312 | Lillian Hellman |
++----------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> ELECT P.PersonID, 
+    ->        CONCAT(P.Firstname, ' ', P.LastName) AS Name, 
+    -> FROM 
+    ->     Person P 
+    -> WHERE 
+    ->      P.PersonID IN (
+    ->         SELECT W.PersonID 
+    ->         FROM Worker W
+    ->         WHERE W.JobTitle = 'Writer'
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ELECT P.PersonID, 
+       CONCAT(P.Firstname, ' ', P.LastName) AS Name, 
+FROM 
+ ' at line 1
+mysql> 
+mysql> SELECT P.PersonID, CONCAT(P.Firstname, ' ', P.LastName) AS Name
+    -> FROM Person P 
+    -> WHERE P.PersonID IN (
+    ->         SELECT W.PersonID 
+    ->         FROM Worker W
+    ->         WHERE W.JobTitle = 'Writer'
+    -> );
++----------+-----------------+
+| PersonID | Name            |
++----------+-----------------+
+| EE223312 | Lillian Hellman |
++----------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT
+    ->     F.FestName,
+    ->     COUNT(DISTINCT R.FilmID) AS NumOfAwardedMovies
+    -> FROM
+    ->     Festival F
+    -> LEFT JOIN
+    ->     Received R ON F.Fest_ID = R.Fest_ID -- Link Festival to Awards
+    -> GROUP BY
+    ->     F.FestName
+    -> ORDER BY
+    ->     NumOfAwardedMovies DESC
+    -> LIMIT 1; -- Ensures only the single top festival is returned
++----------------------+--------------------+
+| FestName             | NumOfAwardedMovies |
++----------------------+--------------------+
+| Cannes Film Festival |                  3 |
++----------------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> SELECT F.FestName, 
+    ->        COUNT(J.FilmID) AS NumOfAwarded 
+    -> FROM 
+    ->     Festival F 
+    -> LEFT JOIN Participates R ON F.FestID = R.Fest_ID
+    ->  GROUP BY F.Name 
+    ->  ORDER BY NumOfAwarderded DESC
+    ->  LIMIT 1;
+ERROR 1054 (42S22): Unknown column 'J.FilmID' in 'field list'
+mysql> SELECT F.FestName, 
+    ->        COUNT(R.FilmID) AS NumOfAwarded 
+    -> FROM 
+    ->     Festival F 
+    -> LEFT JOIN Participates R ON F.FestID = R.Fest_ID
+    ->  GROUP BY F.Name 
+    ->  ORDER BY NumOfAwarderded DESC
+    ->  LIMIT 1;
+ERROR 1054 (42S22): Unknown column 'F.FestID' in 'on clause'
+mysql> SELECT F.FestName, 
+    ->        COUNT(R.FilmID) AS NumOfAwarded 
+    -> FROM 
+    ->     Festival F 
+    -> LEFT JOIN Participates R ON F.Fest_ID = R.Fest_ID
+    -> GROUP BY 
+    ->     F.FestName 
+    -> ORDER BY 
+    ->     NumOfAwarderded DESC
+    -> LIMIT 1;
+ERROR 1054 (42S22): Unknown column 'R.Fest_ID' in 'on clause'
+mysql> SELECT F.FestName, 
+    ->        COUNT(R.FilmID) AS NumOfAwarded 
+    -> FROM 
+    ->     Festival F 
+    -> LEFT JOIN Received R ON F.Fest_ID = R.Fest_ID
+    -> GROUP BY 
+    ->     F.FestName 
+    -> ORDER BY 
+    ->     NumOfAwarderded DESC
+    -> LIMIT 1;
+ERROR 1054 (42S22): Unknown column 'NumOfAwarderded' in 'order clause'
+mysql> SELECT F.FestName, 
+    ->        COUNT(R.FilmID) AS NumOfAwarded 
+    -> FROM 
+    ->     Festival F 
+    -> LEFT JOIN Received R ON F.Fest_ID = R.Fest_ID
+    -> GROUP BY 
+    ->     F.FestName 
+    -> ORDER BY 
+    ->     NumOfAwarded DESC
+    -> LIMIT 1;
++----------------------+--------------+
+| FestName             | NumOfAwarded |
++----------------------+--------------+
+| Cannes Film Festival |            5 |
++----------------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> 

@@ -1,0 +1,2475 @@
+mysql> SOURCE createtables.sql
+ERROR 3730 (HY000): Cannot drop table 'Person' referenced by a foreign key constraint 'Actor_ibfk_1' on table 'Actor'.
+ERROR 1050 (42S01): Table 'Person' already exists
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 0 rows affected (0.09 sec)
+
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 0 rows affected (0.08 sec)
+
+ERROR 3730 (HY000): Cannot drop table 'Film' referenced by a foreign key constraint 'Participates_ibfk_2' on table 'Participates'.
+ERROR 1050 (42S01): Table 'Film' already exists
+ERROR 3730 (HY000): Cannot drop table 'Award' referenced by a foreign key constraint 'Received_ibfk_3' on table 'Received'.
+ERROR 1050 (42S01): Table 'Award' already exists
+ERROR 3730 (HY000): Cannot drop table 'Festival' referenced by a foreign key constraint 'Received_ibfk_4' on table 'Received'.
+ERROR 1050 (42S01): Table 'Festival' already exists
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 0 rows affected (0.08 sec)
+
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 0 rows affected, 1 warning (0.13 sec)
+
+mysql> SOURCE createtables.sql
+ERROR 3730 (HY000): Cannot drop table 'Person' referenced by a foreign key constraint 'Actor_ibfk_1' on table 'Actor'.
+ERROR 1050 (42S01): Table 'Person' already exists
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 0 rows affected (0.10 sec)
+
+Query OK, 0 rows affected (0.11 sec)
+
+Query OK, 0 rows affected (0.20 sec)
+
+ERROR 3730 (HY000): Cannot drop table 'Film' referenced by a foreign key constraint 'Participates_ibfk_2' on table 'Participates'.
+ERROR 1050 (42S01): Table 'Film' already exists
+ERROR 3730 (HY000): Cannot drop table 'Award' referenced by a foreign key constraint 'Received_ibfk_3' on table 'Received'.
+ERROR 1050 (42S01): Table 'Award' already exists
+ERROR 3730 (HY000): Cannot drop table 'Festival' referenced by a foreign key constraint 'Received_ibfk_4' on table 'Received'.
+ERROR 1050 (42S01): Table 'Festival' already exists
+Query OK, 0 rows affected (0.06 sec)
+
+Query OK, 0 rows affected (0.12 sec)
+
+Query OK, 0 rows affected (0.07 sec)
+
+Query OK, 0 rows affected, 1 warning (0.15 sec)
+
+mysql> DROP TABLE IF EXISTS Film;
+ERROR 3730 (HY000): Cannot drop table 'Film' referenced by a foreign key constraint 'Participates_ibfk_2' on table 'Participates'.
+mysql> SHOW TABLES+
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+' at line 1
+mysql> SHOW TABLES;
++------------------+
+| Tables_in_dswork |
++------------------+
+| Actor            |
+| Award            |
+| Festival         |
+| Film             |
+| Participates     |
+| Person           |
+| Received         |
+| Worker           |
++------------------+
+8 rows in set (0.00 sec)
+
+mysql> DROP TABLES Actor, Award, Festival, Film, Participates, Person, Received, Worker;
+Query OK, 0 rows affected (0.43 sec)
+
+mysql> SOURCE createtables.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.09 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.09 sec)
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.10 sec)
+
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+Query OK, 0 rows affected, 1 warning (0.18 sec)
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.15 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.10 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.10 sec)
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected, 1 warning (0.14 sec)
+
+mysql> SHOW TABLES;
++------------------+
+| Tables_in_dswork |
++------------------+
+| Actor            |
+| Award            |
+| Festival         |
+| Film             |
+| Participates     |
+| Person           |
+| Received         |
+| Worker           |
++------------------+
+8 rows in set (0.00 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1234890','Suezawa','Seiya','0000-000-000');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM Person
+    -> ;
++----------+----------+-----------+--------------+
+| PersonID | LastName | FirstName | Phone        |
++----------+----------+-----------+--------------+
+| D1234890 | Suezawa  | Seiya     | 0000-000-000 |
++----------+----------+-----------+--------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE DATABASE Fujishima_21873542;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> SHOW DATABASE;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DATABASE' at line 1
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| Fujishima_21873542 |
+| dswork             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql> USE Fujishima_21873542
+Database changed
+mysql> Tee KanonFinal.out
+mysql> USE Fujishima_21873542
+Database changed
+mysql> CREATE DATABASE Fujishima_21873542;
+ERROR 1007 (HY000): Can't create database 'Fujishima_21873542'; database exists
+mysql> SOURCE inserttables;
+ERROR: 
+Failed to open file 'inserttables', error: 2
+mysql> SOURCE inserttables.sql
+ERROR 1146 (42S02): Table 'Fujishima_21873542.Person' doesn't exist
+mysql> SHOW TABLES;
+Empty set (0.00 sec)
+
+mysql> SOURCE createtables.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.10 sec)
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.11 sec)
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.09 sec)
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected, 1 warning (0.15 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.09 sec)
+
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+Query OK, 0 rows affected (0.09 sec)
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.09 sec)
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected, 1 warning (0.17 sec)
+
+mysql> SOURCE inserttables.sql
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM Person;
++----------+----------+-----------+-------+
+| PersonID | LastName | FirstName | Phone |
++----------+----------+-----------+-------+
+| C1234567 | Lean     | David     |       |
++----------+----------+-----------+-------+
+1 row in set (0.00 sec)
+
+mysql> SHOW TABLES;
++------------------------------+
+| Tables_in_Fujishima_21873542 |
++------------------------------+
+| Actor                        |
+| Award                        |
+| Festival                     |
+| Film                         |
+| Participates                 |
+| Person                       |
+| Received                     |
+| Worker                       |
++------------------------------+
+8 rows in set (0.00 sec)
+
+mysql> DROP TABLES Actor, Award, Festival, Film, Participates, Person, Received, Worker;
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> SHOW TABLES;
+Empty set (0.01 sec)
+
+mysql> SOURCE createtables.sql;
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.12 sec)
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.10 sec)
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.22 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.09 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.09 sec)
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.07 sec)
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.15 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.16 sec)
+
+mysql> SHOW TABLES;
++------------------------------+
+| Tables_in_Fujishima_21873542 |
++------------------------------+
+| Actor                        |
+| Award                        |
+| Festival                     |
+| Film                         |
+| Participates                 |
+| Person                       |
+| Received                     |
+| Worker                       |
++------------------------------+
+8 rows in set (0.00 sec)
+
+mysql> SOURCE inserttables.sql;
+Query OK, 1 row affected (0.04 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Director','D1111954')' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Director','D1111952')' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IINSERT INTO Worker
+('Director','C1222946')' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Director','C1111946')' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''Director','C1234567')' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''FFFF1946','1946','War,Drama','Refugee Crisis')' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''FFF21946','1946','Romantic, Drama','Forbidden Love')' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''FFF21946','1946','Psycho Drama','Mental Health')' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''FFF1952','1952','Historical Drama','Betrayal,Race')' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''FFF1954','1954','Historical Drama','Obsession')' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"A1","Palme d Or","Most prestigious awards")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"C22","Oscar Award","The Academy Awards")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"A11","Cannes Film Festival","1009-1946","0510-1946","Feance","Cannes","former C' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"A22","The Oscars","0108-1927","31071928","USA","Los Angeles","Hollywood Rooseve' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"C1234567","FFFF1946","A1","1946","A11")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"C1234555","FFFF1946","A1","1946","A11")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"C1111946","FFF21946","A1","1946","A11")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"C1111234","FFF21946","A1","1946","A11")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"C1222946","FFF21946","A1","1946","A11")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"D1111952","FFF1952","A1","1952","A11")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"D1111954","FFF1954","A1","1954","A11")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"C1234567","FFFF1946","A1","1946","A11")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"C1111946","FFF21946","A1","1946","A11")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"C1111234","FFF21946","A1","1946","A11")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"C1222946","FFFF21946","A1","1952","A11")' at line 2
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"D1111954","FFF1954","A1","1954","A11")' at line 2
+mysql> SOURCE inserttables.sql;
+ERROR 1062 (23000): Duplicate entry 'C1234567' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1234555' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1111946' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1111234' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1222946' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'D1111952' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'D1111954' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1234555' for key 'Actor.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1111234' for key 'Actor.PRIMARY'
+Query OK, 1 row affected (0.02 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IINSERT INTO Worker  VALUES
+('Director','C1222946')' at line 1
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.02 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+ERROR 1146 (42S02): Table 'Fujishima_21873542.FIlm' doesn't exist
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+ERROR 1292 (22007): Incorrect date value: '1009-1946' for column 'StartDate' at row 1
+ERROR 1292 (22007): Incorrect date value: '0108-1927' for column 'StartDate' at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4` FOREIGN KEY (`Fest_ID`) REFERENCES `Festival` (`Fest_ID`) ON DELETE CASCADE)
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4` FOREIGN KEY (`Fest_ID`) REFERENCES `Festival` (`Fest_ID`) ON DELETE CASCADE)
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4` FOREIGN KEY (`Fest_ID`) REFERENCES `Festival` (`Fest_ID`) ON DELETE CASCADE)
+ERROR 1406 (22001): Data too long for column 'FilmID' at row 1
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4` FOREIGN KEY (`Fest_ID`) REFERENCES `Festival` (`Fest_ID`) ON DELETE CASCADE)
+mysql> SOURCE inserttables.sql;
+ERROR 1062 (23000): Duplicate entry 'C1234567' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1234555' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1111946' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1111234' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1222946' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'D1111952' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'D1111954' for key 'Person.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1234555' for key 'Actor.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1111234' for key 'Actor.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'D1111954' for key 'Worker.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'D1111952' for key 'Worker.PRIMARY'
+Query OK, 1 row affected (0.02 sec)
+
+ERROR 1062 (23000): Duplicate entry 'C1111946' for key 'Worker.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C1234567' for key 'Worker.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'FFFF1946' for key 'Film.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'FFF21946' for key 'Film.PRIMARY'
+ERROR 1146 (42S02): Table 'Fujishima_21873542.FIlm' doesn't exist
+ERROR 1062 (23000): Duplicate entry 'FFF1952' for key 'Film.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'FFF1954' for key 'Film.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'A1' for key 'Award.PRIMARY'
+ERROR 1062 (23000): Duplicate entry 'C22' for key 'Award.PRIMARY'
+ERROR 1292 (22007): Incorrect date value: '1009-1946' for column 'StartDate' at row 1
+ERROR 1292 (22007): Incorrect date value: '0108-1927' for column 'StartDate' at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4` FOREIGN KEY (`Fest_ID`) REFERENCES `Festival` (`Fest_ID`) ON DELETE CASCADE)
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4` FOREIGN KEY (`Fest_ID`) REFERENCES `Festival` (`Fest_ID`) ON DELETE CASCADE)
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4` FOREIGN KEY (`Fest_ID`) REFERENCES `Festival` (`Fest_ID`) ON DELETE CASCADE)
+ERROR 1406 (22001): Data too long for column 'FilmID' at row 1
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4` FOREIGN KEY (`Fest_ID`) REFERENCES `Festival` (`Fest_ID`) ON DELETE CASCADE)
+mysql> TRUNCATE TABLE Received;
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> TRUNCATE TABLE Participates;
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> TRUNCATE TABLE Actor;
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> TRUNCATE TABLE Worker;
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> TRUNCATE TABLE Person;
+ERROR 1701 (42000): Cannot truncate a table referenced in a foreign key constraint (`Fujishima_21873542`.`Actor`, CONSTRAINT `Actor_ibfk_1`)
+mysql> TRUNCATE TABLE Film;
+ERROR 1701 (42000): Cannot truncate a table referenced in a foreign key constraint (`Fujishima_21873542`.`Participates`, CONSTRAINT `Participates_ibfk_2`)
+mysql> TRUNCATE TABLE Award;
+ERROR 1701 (42000): Cannot truncate a table referenced in a foreign key constraint (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3`)
+mysql> TRUNCATE TABLE Festival;SELECT * Person;
+ERROR 1701 (42000): Cannot truncate a table referenced in a foreign key constraint (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4`)
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Person' at line 1
+mysql> SELECT * FROM Person;
++----------+-----------+-----------+-------+
+| PersonID | LastName  | FirstName | Phone |
++----------+-----------+-----------+-------+
+| C1111234 | Rossi     | Lusia     |       |
+| C1111946 | Lindtberg | Leopold   |       |
+| C1222946 | Wilder    | Billy     |       |
+| C1234555 | Celia     | Johnson   |       |
+| C1234567 | Lean      | David     |       |
+| D1111952 | Welles    | Orson     |       |
+| D1111954 | Kinugasa  | Teinosuke |       |
++----------+-----------+-----------+-------+
+7 rows in set (0.00 sec)
+
+mysql> -- DELETE FROM is slower but universally supported
+mysql> DELETE FROM Received;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Participates;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Actor;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Worker;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Person;
+Query OK, 7 rows affected (0.02 sec)
+
+mysql> DELETE FROM Film;
+Query OK, 4 rows affected (0.06 sec)
+
+mysql> DELETE FROM Award;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> DELETE FROM Festival;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM Person;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO Person VALUES 
+    -> ('C1234567','Lean','David','');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1234555','Celia','Johnson','');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111946','Lindtberg','Leopold','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111234','Rossi','Lusia','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1222946','Wilder','Billy','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1111952','Welles','Orson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1111954','Kinugasa','Teinosuke','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('C1234555','Aubrey Blackburn');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('C1111234','');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','D1111954');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO Worker  VALUES
+    -> ('Director','D1111952');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker  VALUES
+    -> ('Director','C1222946');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1111946');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1234567');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFFF1946','1946','War,Drama','Refugee Crisis');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF21946','1946','Romantic, Drama','Forbidden Love');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF31946','1946','Psycho Drama','Mental Health');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1952','1952','Historical Drama','Betrayal,Race');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1954','1954','Historical Drama','Obsession');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> -- Insert values to Award
+mysql> INSERT INTO Award VALUES
+    -> ('A1','Palme dOr','Most prestigious awards');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Award VALUES
+    -> ('C22','Oscar Award','The Academy Awards');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','10-09-1946','05-10-1946','Feance','Cannes','former Casinoof Cannes');
+ERROR 1292 (22007): Incorrect date value: '10-09-1946' for column 'StartDate' at row 1
+mysql> INSERT INTO Festival VALUES
+    -> ('A22','The Oscars','0108-1927','31-07-1928','USA','Los Angeles','Hollywood Roosevelt Hotel');
+ERROR 1292 (22007): Incorrect date value: '0108-1927' for column 'StartDate' at row 1
+mysql> NSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','1946-09-10','1946-10-05','Feance','Cannes','former Casinoof Cannes');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NSERT INTO Festival VALUES
+('A11','Cannes Film Festival','1946-09-10','1946-10-0' at line 1
+mysql> INSERT INTO Festival VALUES
+    -> ('A22','The Oscars','1927-08-01','1928-07-31','USA','Los Angeles','Hollywood Roosevelt Hotel');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> NSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','1946-09-10','1946-10-05','Feance','Cannes','former Casinoof Cannes');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NSERT INTO Festival VALUES
+('A11','Cannes Film Festival','1946-09-10','1946-10-0' at line 1
+mysql> INSERT INTO Festival VALUES
+    -> ('A22','The Oscars','1927-08-01','1928-07-31','USA','Los Angeles','Hollywood Roosevelt Hotel');
+ERROR 1062 (23000): Duplicate entry 'A22' for key 'Festival.PRIMARY'
+mysql> INSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','1946-09-10','1946-10-05','Feance','Cannes','former Casinoof Cannes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DELETE FROM Festivals;
+ERROR 1146 (42S02): Table 'Fujishima_21873542.Festivals' doesn't exist
+mysql> DELETE FROM Festival;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> INSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','1946-09-10','1946-10-05','Feance','Cannes','former Casinoof Cannes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Festival VALUES
+    -> ('A22','The Oscars','1927-08-01','1928-07-31','USA','Los Angeles','Hollywood Roosevelt Hotel');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234567','FFFF1946','A1','1946','A11');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234555','FFFF1946','A1','1946','A11');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111946','FFF21946','A1','1946','A11');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111234','FFF21946','A1','1946','A11');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Participates VALUES
+    -> ('C1222946','FFF21946','A1','1946','A11');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Participates VALUES
+    -> ('D1111952','FFF1952','A1','1952','A11');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Participates VALUES
+    -> ('D1111954','FFF1954','A1','1954','A11');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234567','FFFF1946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234555','FFFF1946','Actor');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111946','FFF21946','Director');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111234','FFF21946','Actor');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1222946','FFF21946','Director');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('D1111952','FFF1952','Director');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('D1111954','FFF1954','Director');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Received VALUES
+    -> ('C1234567','FFFF1946','A1','1946','A11');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Received VALUES
+    -> ('C1111946','FFF21946','A1','1946','A11');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Received VALUES
+    -> ('C1111234','FFF21946','A1','1946','A11');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Received VALUES
+    -> ('C1222946','FFFF21946','A1','1952','A11');
+ERROR 1406 (22001): Data too long for column 'FilmID' at row 1
+mysql> INSERT INTO Received VALUES
+    -> ('D1111954','FFF1954','A1','1954','A11');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Received VALUES
+    -> ('C1222946','FFF21946','A1','1952','A11');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM Received;
++----------+----------+---------+-------+---------+
+| PersonID | FilmID   | AwardID | AYear | Fest_ID |
++----------+----------+---------+-------+---------+
+| D1111954 | FFF1954  | A1      |  1954 | A11     |
+| C1111234 | FFF21946 | A1      |  1946 | A11     |
+| C1111946 | FFF21946 | A1      |  1946 | A11     |
+| C1222946 | FFF21946 | A1      |  1952 | A11     |
+| C1234567 | FFFF1946 | A1      |  1946 | A11     |
++----------+----------+---------+-------+---------+
+5 rows in set (0.00 sec)
+
+mysql> DELETE FROM Received;
+Query OK, 5 rows affected (0.03 sec)
+
+mysql> DELETE FROM Participates;
+Query OK, 7 rows affected (0.02 sec)
+
+mysql> DELETE FROM Actor;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> DELETE FROM Worker;
+Query OK, 5 rows affected (0.01 sec)
+
+mysql> DELETE FROM Person;
+Query OK, 7 rows affected (0.03 sec)
+
+mysql> DELETE FROM Film;
+Query OK, 5 rows affected (0.01 sec)
+
+mysql> DELETE FROM Award;
+Query OK, 2 rows affected (0.02 sec)
+
+mysql> DELETE FROM Festival;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> /* Final Assignmetn ISYS2014 */
+mysql> /* Kanon Fujishima 21873542 */
+mysql> 
+mysql> -- Insert values to Person
+mysql> INSERT INTO Person VALUES 
+    -> ('C1234567','Lean','David','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1234555','Celia','Johnson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111946','Lindtberg','Leopold','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111234','Rossi','Lusia','');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1222946','Wilder','Billy','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1111952','Welles','Orson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1111954','Kinugasa','Teinosuke','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Person VALUES
+    -> ('E2233123','Wyler','William','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EE223312','Hellman','');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Person VALUES
+    -> ('EEEE2345','Schafer','Rudolph','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('PPE23455','Ball','Lucille','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> -- Insert values to Actor
+mysql> INSERT INTO Actor VALUES
+    -> ('C1234555','Aubrey Blackburn');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('C1111234','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('PPE23455','Starring');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Worker
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','D1111954');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker  VALUES
+    -> ('Director','D1111952');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker  VALUES
+    -> ('Director','C1222946');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1111946');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1234567');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','E2233123');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Writer','EE223312');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Worker`, CONSTRAINT `Worker_ibfk_1` FOREIGN KEY (`PersonID`) REFERENCES `Person` (`PersonID`) ON DELETE CASCADE)
+mysql> INSERT INTO Worker VALUES
+    -> ('Cinematograpgher','EEEE2345');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Producer','QQP12345');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Worker`, CONSTRAINT `Worker_ibfk_1` FOREIGN KEY (`PersonID`) REFERENCES `Person` (`PersonID`) ON DELETE CASCADE)
+mysql> 
+mysql> -- Insert values to Film
+mysql> INSERT INTO Film VALUES
+    -> ('FFFF1946','1946','War,Drama','The Last Chance');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF21946','1946','Romantic, Drama','Brief Encounter');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF31946','1946','Psycho Drama','The Lost Weekend');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1952','1952','Historical Drama','The Little Foxes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1954','1954','Historical Drama','49th Parallel');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Film VALUES
+    -> ('A10923','1941','Mystery, Drama','Intrigue Journalism');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('B19413','1941','War Action','Naval Battle, history')
+    -> 
+    -> -- Insert values to Award
+    -> INSERT INTO Award VALUES
+    -> ('A1','Palme dOr','Most prestigious awards');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO Award VALUES
+('A1','Palme dOr','Most prestigious awards')' at line 5
+mysql> INSERT INTO Award VALUES
+    -> ('C22','Oscar Award','The Academy Awards');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Festival
+mysql> INSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','1946-09-10','1946-10-05','Feance','Cannes','former Casinoof Cannes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Festival VALUES
+    -> ('A22','The Oscars','1927-08-01','1928-07-31','USA','Los Angeles','Hollywood Roosevelt Hotel');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Participates
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234567','FFFF1946','Director');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234555','FFFF1946','Actor');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111946','FFF21946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111234','FFF21946','Actor');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1222946','FFF21946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('D1111952','FFF1952','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('D1111954','FFF1954','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Participates VALUES
+    -> ('E2233123','A10923','C22','1941','Director');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Participates VALUES
+    -> ('EE223312','A10923','C22','1941','Writer');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Participates VALUES
+    -> ('EEEE2345','A10923','C22','19411','Cinematograher');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Participates VALUES
+    -> ('QQP12345','B19413','C22','1941','Producer');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> 
+mysql> -- Insert values to Received
+mysql> INSERT INTO Received VALUES
+    -> ('C1234567','FFFF1946','A1','1946','A11');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('C1111946','FFF21946','A1','1946','A11');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('C1111234','FFF21946','A1','1946','A11');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('C1222946','FFF21946','A1','1952','A11');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('D1111954','FFF1954','A1','1954','A11');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE CASCADE)
+mysql> 
+mysql> INSERT INTO Received VALUES
+    -> ('E2233123','A10923','C22','1941','A22');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Received VALUES
+    -> ('D1111952','A10923','C22','1941','A22');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DELETE FROM Received;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> DELETE FROM Participates;
+Query OK, 7 rows affected (0.01 sec)
+
+mysql> DELETE FROM Actor;
+Query OK, 3 rows affected (0.01 sec)
+
+mysql> DELETE FROM Worker;
+Query OK, 7 rows affected (0.01 sec)
+
+mysql> DELETE FROM Person;
+Query OK, 10 rows affected (0.02 sec)
+
+mysql> DELETE FROM Film;
+Query OK, 6 rows affected (0.02 sec)
+
+mysql> DELETE FROM Award;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DELETE FROM Festival;
+Query OK, 2 rows affected (0.06 sec)
+
+mysql> INSERT INTO Person VALUES 
+    -> ('C1234567','Lean','David','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1234555','Celia','Johnson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111946','Lindtberg','Leopold','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111234','Rossi','Lusia','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1222946','Wilder','Billy','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('QQP12345','Welles','Orson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1111954','Kinugasa','Teinosuke','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Person VALUES
+    -> ('E2233123','Wyler','William','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EE223312','Hellman','');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Person VALUES
+    -> ('EEEE2345','Schafer','Rudolph','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('PPE23455','Ball','Lucille','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DELETE FROM Received;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Participates;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Actor;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Worker;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Person;
+Query OK, 10 rows affected (0.01 sec)
+
+mysql> DELETE FROM Film;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Award;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Festival;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> NSERT INTO Person VALUES 
+    -> ('C1234567','Lean','David','');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NSERT INTO Person VALUES 
+('C1234567','Lean','David','')' at line 1
+mysql> INSERT INTO Person VALUES
+    -> ('C1234555','Celia','Johnson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111946','Lindtberg','Leopold','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111234','Rossi','Lusia','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1222946','Wilder','Billy','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('QQP12345','Welles','Orson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1111954','Kinugasa','Teinosuke','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DELETE FROM Received;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Participates;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Actor;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Worker;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Person;
+Query OK, 6 rows affected (0.01 sec)
+
+mysql> DELETE FROM Film;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Award;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Festival;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO Person VALUES 
+    -> ('C1234567','Lean','David','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1234555','Celia','Johnson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111946','Lindtberg','Leopold','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111234','Rossi','Lusia','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1222946','Wilder','Billy','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('QQP12345','Welles','Orson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1111954','Kinugasa','Teinosuke','');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> INSERT INTO Person VALUES
+    -> ('E2233123','Wyler','William','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EE223312','Hellman','');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO Person VALUES
+    -> ('EEEE2345','Schafer','Rudolph','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('PPE23455','Ball','Lucille','');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SDELETE FROM Received;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SDELETE FROM Received' at line 1
+mysql> DELETE FROM Participates;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Actor;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Worker;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Person;
+Query OK, 10 rows affected (0.01 sec)
+
+mysql> DELETE FROM Film;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Award;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Festival;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO Person VALUES 
+    -> ('C1234567','Lean','David','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1234555','Celia','Johnson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111946','Lindtberg','Leopold','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111234','Rossi','Lusia','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1222946','Wilder','Billy','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('QQP12345','Welles','Orson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1111954','Kinugasa','Teinosuke','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Person VALUES
+    -> ('E2233123','Wyler','William','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EE223312','Hellman','Lillian','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EEEE2345','Schafer','Rudolph','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('PPE23455','Ball','Lucille','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> SELECT * FROM Person;
++----------+-----------+-----------+-------+
+| PersonID | LastName  | FirstName | Phone |
++----------+-----------+-----------+-------+
+| C1111234 | Rossi     | Lusia     |       |
+| C1111946 | Lindtberg | Leopold   |       |
+| C1222946 | Wilder    | Billy     |       |
+| C1234555 | Celia     | Johnson   |       |
+| C1234567 | Lean      | David     |       |
+| D1111954 | Kinugasa  | Teinosuke |       |
+| E2233123 | Wyler     | William   |       |
+| EE223312 | Hellman   | Lillian   |       |
+| EEEE2345 | Schafer   | Rudolph   |       |
+| PPE23455 | Ball      | Lucille   |       |
+| QQP12345 | Welles    | Orson     |       |
++----------+-----------+-----------+-------+
+11 rows in set (0.00 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('C1234555','Aubrey Blackburn');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('C1111234','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('PPE23455','Starring');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Worker
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','D1111954');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker  VALUES
+    -> ('Director','D1111952');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Worker`, CONSTRAINT `Worker_ibfk_1` FOREIGN KEY (`PersonID`) REFERENCES `Person` (`PersonID`) ON DELETE CASCADE)
+mysql> INSERT INTO Worker  VALUES
+    -> ('Director','C1222946');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1111946');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1234567');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','E2233123');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Writer','EE223312');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Cinematograpgher','EEEE2345');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Producer','QQP12345');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DELETE FROM Worker;
+Query OK, 8 rows affected (0.09 sec)
+
+mysql> 
+mysql> -- Insert values to Worker
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','D1111954');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker  VALUES
+    -> ('Director','C1222946');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1111946');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1234567');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','E2233123');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Writer','EE223312');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Cinematograpgher','EEEE2345');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Producer','QQP12345');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Film
+mysql> INSERT INTO Film VALUES
+    -> ('FFFF1946','1946','War,Drama','The Last Chance');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF21946','1946','Romantic, Drama','Brief Encounter');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF31946','1946','Psycho Drama','The Lost Weekend');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1952','1952','Historical Drama','Otherllo');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1954','1954','Historical Drama','Gate of Hell');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Film VALUES
+    -> ('A10923','1941','Mystery, Drama','The Little Foxes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('B19413','1941','War Action','49th Parallel')
+    -> 
+    -> -- Insert values to Award
+    -> INSERT INTO Award VALUES
+    -> ('A1','Palme dOr','Most prestigious awards');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO Award VALUES
+('A1','Palme dOr','Most prestigious awards')' at line 5
+mysql> INSERT INTO Award VALUES
+    -> ('C22','Oscar Award','The Academy Awards');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> DELETE FROM Award;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Award VALUES
+    -> ('A11','Palme dOr','Most prestigious awards');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Award VALUES
+    -> ('C22','Oscar Award','The Academy Awards');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> - Insert values to Festival
+    -> INSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','1946-09-10','1946-10-05','Feance','Cannes','former Casinoof Cannes');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '- Insert values to Festival
+INSERT INTO Festival VALUES
+('A11','Cannes Film Fest' at line 1
+mysql> INSERT INTO Festival VALUES
+    -> ('A22','The Oscars','1927-08-01','1928-07-31','USA','Los Angeles','Hollywood Roosevelt Hotel');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','1946-09-10','1946-10-05','Feance','Cannes','former Casinoof Cannes');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Festival VALUES
+    -> ('A22','The Oscars','1927-08-01','1928-07-31','USA','Los Angeles','Hollywood Roosevelt Hotel');
+ERROR 1062 (23000): Duplicate entry 'A22' for key 'Festival.PRIMARY'
+mysql> DELETE FROM Festival;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> INSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','1946-09-10','1946-10-05','Feance','Cannes','former Casinoof Cannes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Festival VALUES
+    -> ('A22','The Oscars','1927-08-01','1928-07-31','USA','Los Angeles','Hollywood Roosevelt Hotel');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> -- Insert values to Participates
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234567','FFFF1946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234555','FFFF1946','Actor');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111946','FFF21946','Director');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111234','FFF21946','Actor');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1222946','FFF21946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('D1111952','FFF1952','Director');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Participates`, CONSTRAINT `Participates_ibfk_1` FOREIGN KEY (`PersonID`) REFERENCES `Person` (`PersonID`) ON DELETE CASCADE)
+mysql> INSERT INTO Participates VALUES
+    -> ('D1111954','FFF1954','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Participates VALUES
+    -> ('E2233123','A10923','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('EE223312','A10923','Writer');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('EEEE2345','A10923','Cinematograher');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('QQP12345','B19413','Producer');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Participates`, CONSTRAINT `Participates_ibfk_2` FOREIGN KEY (`FilmID`) REFERENCES `Film` (`FilmID`) ON DELETE CASCADE)
+mysql> INSERT INTO Participates VALUES
+    -> ('QQP12345','B19413','Producer');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Participates`, CONSTRAINT `Participates_ibfk_2` FOREIGN KEY (`FilmID`) REFERENCES `Film` (`FilmID`) ON DELETE CASCADE)
+mysql> INSERT INTO Film VALUES
+    -> ('B19413','1941','War Action','49th Parallel')
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('QQP12345','B19413','Producer');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DELETE FROM Received;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Participates;
+Query OK, 10 rows affected (0.01 sec)
+
+mysql> DELETE FROM Actor;
+Query OK, 3 rows affected (0.01 sec)
+
+mysql> DELETE FROM Worker;
+Query OK, 8 rows affected (0.02 sec)
+
+mysql> DELETE FROM Person;
+Query OK, 11 rows affected (0.01 sec)
+
+mysql> DELETE FROM Film;
+Query OK, 7 rows affected (0.01 sec)
+
+mysql> DELETE FROM Award;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> DELETE FROM Festival;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> -- Insert values to Person
+mysql> INSERT INTO Person VALUES 
+    -> ('C1234567','Lean','David','');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1234555','Celia','Johnson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111946','Lindtberg','Leopold','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111234','Rossi','Lusia','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1222946','Wilder','Billy','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('QQP12345','Welles','Orson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1111954','Kinugasa','Teinosuke','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Person VALUES
+    -> ('E2233123','Wyler','William','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EE223312','Hellman','Lillian','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EEEE2345','Schafer','Rudolph','');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('PPE23455','Ball','Lucille','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> -- Insert values to Actor
+mysql> INSERT INTO Actor VALUES
+    -> ('C1234555','Aubrey Blackburn');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('C1111234','');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('PPE23455','Starring');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Worker
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','D1111954');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker  VALUES
+    -> ('Director','C1222946');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1111946');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1234567');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','E2233123');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Writer','EE223312');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Cinematograpgher','EEEE2345');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Producer','QQP12345');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Film
+mysql> INSERT INTO Film VALUES
+    -> ('FFFF1946','1946','War,Drama','The Last Chance');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF21946','1946','Romantic, Drama','Brief Encounter');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF31946','1946','Psycho Drama','The Lost Weekend');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1952','1952','Historical Drama','Otherllo');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1954','1954','Historical Drama','Gate of Hell');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Film VALUES
+    -> ('A10923','1941','Mystery, Drama','The Little Foxes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('B19413','1941','War Action','49th Parallel')
+    -> 
+    -> -- Insert values to Award
+    -> INSERT INTO Award VALUES
+    -> ('A11','Palme dOr','Most prestigious awards');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO Award VALUES
+('A11','Palme dOr','Most prestigious awards')' at line 5
+mysql> INSERT INTO Award VALUES
+    -> ('C22','Oscar Award','The Academy Awards');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Festival
+mysql> INSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','1946-09-10','1946-10-05','Feance','Cannes','former Casinoof Cannes');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO Festival VALUES
+    -> ('A22','The Oscars','1927-08-01','1928-07-31','USA','Los Angeles','Hollywood Roosevelt Hotel');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Participates
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234567','FFFF1946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234555','FFFF1946','Actor');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111946','FFF21946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111234','FFF21946','Actor');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1222946','FFF21946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('D1111954','FFF1954','Director');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> INSERT INTO Participates VALUES
+    -> ('E2233123','A10923','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('EE223312','A10923','Writer');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('EEEE2345','A10923','Cinematograher');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('QQP12345','B19413','Producer');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Participates`, CONSTRAINT `Participates_ibfk_2` FOREIGN KEY (`FilmID`) REFERENCES `Film` (`FilmID`) ON DELETE CASCADE)
+mysql> DELETE FROM Received;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Participates;
+Query OK, 9 rows affected (0.07 sec)
+
+mysql> DELETE FROM Actor;
+Query OK, 3 rows affected (0.01 sec)
+
+mysql> DELETE FROM Worker;
+Query OK, 8 rows affected (0.02 sec)
+
+mysql> DELETE FROM Person;
+Query OK, 11 rows affected (0.01 sec)
+
+mysql> DELETE FROM Film;
+Query OK, 6 rows affected (0.01 sec)
+
+mysql> DELETE FROM Award;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DELETE FROM Festival;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> -- Insert values to Person
+mysql> INSERT INTO Person VALUES 
+    -> ('C1234567','Lean','David','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1234555','Celia','Johnson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111946','Lindtberg','Leopold','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111234','Rossi','Lusia','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1222946','Wilder','Billy','');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('QQP12345','Welles','Orson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1111954','Kinugasa','Teinosuke','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Person VALUES
+    -> ('E2233123','Wyler','William','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EE223312','Hellman','Lillian','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EEEE2345','Schafer','Rudolph','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('PPE23455','Ball','Lucille','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> -- Insert values to Actor
+mysql> INSERT INTO Actor VALUES
+    -> ('C1234555','Aubrey Blackburn');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('C1111234','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('PPE23455','Starring');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Worker
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','D1111954');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker  VALUES
+    -> ('Director','C1222946');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1111946');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1234567');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','E2233123');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Writer','EE223312');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Cinematograpgher','EEEE2345');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Producer','QQP12345');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Film
+mysql> INSERT INTO Film VALUES
+    -> ('FFFF1946','1946','War,Drama','The Last Chance');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF21946','1946','Romantic, Drama','Brief Encounter');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF31946','1946','Psycho Drama','The Lost Weekend');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1952','1952','Historical Drama','Otherllo');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1954','1954','Historical Drama','Gate of Hell');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Film VALUES
+    -> ('A10923','1941','Mystery, Drama','The Little Foxes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('B19413','1941','War Action','49th Parallel');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Award
+mysql> INSERT INTO Award VALUES
+    -> ('A11','Palme dOr','Most prestigious awards');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Award VALUES
+    -> ('C22','Oscar Award','The Academy Awards');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> -- Insert values to Festival
+mysql> INSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','1946-09-10','1946-10-05','Feance','Cannes','former Casinoof Cannes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Festival VALUES
+    -> ('A22','The Oscars','1927-08-01','1928-07-31','USA','Los Angeles','Hollywood Roosevelt Hotel');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Participates
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234567','FFFF1946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234555','FFFF1946','Actor');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111946','FFF21946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111234','FFF21946','Actor');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1222946','FFF21946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('D1111954','FFF1954','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Participates VALUES
+    -> ('E2233123','A10923','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('EE223312','A10923','Writer');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('EEEE2345','A10923','Cinematograher');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('QQP12345','B19413','Producer');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> -- Insert values to Received
+mysql> INSERT INTO Received VALUES
+    -> ('C1234567','FFFF1946','A1','1946','A11');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('C1111946','FFF21946','A1','1946','A11');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('C1111234','FFF21946','A1','1946','A11');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('C1222946','FFF21946','A1','1952','A11');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('D1111954','FFF1954','A1','1954','A11');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE CASCADE)
+mysql> 
+mysql> INSERT INTO Received VALUES
+    -> ('E2233123','A10923','C22','1941','A22');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Received VALUES
+    -> ('EE223312','A10923','C22','1941','A22');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DELETE FROM Received;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> DELETE FROM Participates;
+Query OK, 10 rows affected (0.02 sec)
+
+mysql> DELETE FROM Actor;
+Query OK, 3 rows affected (0.01 sec)
+
+mysql> DELETE FROM Worker;
+Query OK, 8 rows affected (0.01 sec)
+
+mysql> DELETE FROM Person;
+Query OK, 11 rows affected (0.02 sec)
+
+mysql> DELETE FROM Film;
+Query OK, 7 rows affected (0.02 sec)
+
+mysql> DELETE FROM Award;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> DELETE FROM Festival;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> - Insert values to Person
+    -> INSERT INTO Person VALUES 
+    -> ('C1234567','Lean','David','');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '- Insert values to Person
+INSERT INTO Person VALUES 
+('C1234567','Lean','David',' at line 1
+mysql> INSERT INTO Person VALUES
+    -> ('C1234555','Celia','Johnson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111946','Lindtberg','Leopold','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111234','Rossi','Lusia','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1222946','Wilder','Billy','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('QQP12345','Welles','Orson','');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1111954','Kinugasa','Teinosuke','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Person VALUES
+    -> ('E2233123','Wyler','William','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EE223312','Hellman','Lillian','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EEEE2345','Schafer','Rudolph','');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('PPE23455','Ball','Lucille','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> -- Insert values to Actor
+mysql> INSERT INTO Actor VALUES
+    -> ('C1234555','Aubrey Blackburn');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('C1111234','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('PPE23455','Starring');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Worker
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','D1111954');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker  VALUES
+    -> ('Director','C1222946');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1111946');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1234567');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Worker`, CONSTRAINT `Worker_ibfk_1` FOREIGN KEY (`PersonID`) REFERENCES `Person` (`PersonID`) ON DELETE CASCADE)
+mysql> 
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','E2233123');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Writer','EE223312');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Cinematograpgher','EEEE2345');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Producer','QQP12345');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Film
+mysql> INSERT INTO Film VALUES
+    -> ('FFFF1946','1946','War,Drama','The Last Chance');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF21946','1946','Romantic, Drama','Brief Encounter');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF31946','1946','Psycho Drama','The Lost Weekend');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1952','1952','Historical Drama','Otherllo');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1954','1954','Historical Drama','Gate of Hell');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> INSERT INTO Film VALUES
+    -> ('A10923','1941','Mystery, Drama','The Little Foxes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('B19413','1941','War Action','49th Parallel');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Award
+mysql> INSERT INTO Award VALUES
+    -> ('A11','Palme dOr','Most prestigious awards');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Award VALUES
+    -> ('C22','Oscar Award','The Academy Awards');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Festival
+mysql> INSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','1946-09-10','1946-10-05','Feance','Cannes','former Casinoof Cannes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Festival VALUES
+    -> ('A22','The Oscars','1927-08-01','1928-07-31','USA','Los Angeles','Hollywood Roosevelt Hotel');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> -- Insert values to Participates
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234567','FFFF1946','Director');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Participates`, CONSTRAINT `Participates_ibfk_1` FOREIGN KEY (`PersonID`) REFERENCES `Person` (`PersonID`) ON DELETE CASCADE)
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234555','FFFF1946','Actor');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111946','FFF21946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111234','FFF21946','Actor');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1222946','FFF21946','Director');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('D1111954','FFF1954','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Participates VALUES
+    -> ('E2233123','A10923','Director');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('EE223312','A10923','Writer');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('EEEE2345','A10923','Cinematograher');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('QQP12345','B19413','Producer');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Received
+mysql> INSERT INTO Received VALUES
+    -> ('C1234567','FFFF1946','A11','1946','');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_1` FOREIGN KEY (`PersonID`) REFERENCES `Person` (`PersonID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('C1111946','FFF21946','A11','1946','');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4` FOREIGN KEY (`Fest_ID`) REFERENCES `Festival` (`Fest_ID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('C1111234','FFF21946','A11','1946','');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4` FOREIGN KEY (`Fest_ID`) REFERENCES `Festival` (`Fest_ID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('C1222946','FFF21946','A1','1952','');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('D1111954','FFF1954','A1','1954','');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_3` FOREIGN KEY (`AwardID`) REFERENCES `Award` (`AwardID`) ON DELETE CASCADE)
+mysql> 
+mysql> INSERT INTO Received VALUES
+    -> ('E2233123','A10923','C22','1941','');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4` FOREIGN KEY (`Fest_ID`) REFERENCES `Festival` (`Fest_ID`) ON DELETE CASCADE)
+mysql> INSERT INTO Received VALUES
+    -> ('EE223312','A10923','C22','1941','');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`Fujishima_21873542`.`Received`, CONSTRAINT `Received_ibfk_4` FOREIGN KEY (`Fest_ID`) REFERENCES `Festival` (`Fest_ID`) ON DELETE CASCADE)
+mysql> DELETE FROM Received;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM Participates;
+Query OK, 9 rows affected (0.01 sec)
+
+mysql> DELETE FROM Actor;
+Query OK, 3 rows affected (0.02 sec)
+
+mysql> DELETE FROM Worker;
+Query OK, 7 rows affected (0.01 sec)
+
+mysql> DELETE FROM Person;
+Query OK, 10 rows affected (0.01 sec)
+
+mysql> DELETE FROM Film;
+Query OK, 7 rows affected (0.01 sec)
+
+mysql> DELETE FROM Award;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> DELETE FROM Festival;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Person
+mysql> INSERT INTO Person VALUES 
+    -> ('C1234567','Lean','David','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1234555','Celia','Johnson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111946','Lindtberg','Leopold','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1111234','Rossi','Lusia','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('C1222946','Wilder','Billy','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('QQP12345','Welles','Orson','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('D1111954','Kinugasa','Teinosuke','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Person VALUES
+    -> ('E2233123','Wyler','William','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EE223312','Hellman','Lillian','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('EEEE2345','Schafer','Rudolph','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Person VALUES
+    -> ('PPE23455','Ball','Lucille','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> -- Insert values to Actor
+mysql> INSERT INTO Actor VALUES
+    -> ('C1234555','Aubrey Blackburn');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('C1111234','');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Actor VALUES
+    -> ('PPE23455','Starring');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Worker
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','D1111954');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker  VALUES
+    -> ('Director','C1222946');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1111946');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','C1234567');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Worker VALUES
+    -> ('Director','E2233123');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Writer','EE223312');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Cinematograpgher','EEEE2345');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Worker VALUES
+    -> ('Producer','QQP12345');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> -- Insert values to Film
+mysql> INSERT INTO Film VALUES
+    -> ('FFFF1946','1946','War,Drama','The Last Chance');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF21946','1946','Romantic, Drama','Brief Encounter');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF31946','1946','Psycho Drama','The Lost Weekend');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1952','1952','Historical Drama','Otherllo');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('FFF1954','1954','Historical Drama','Gate of Hell');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> INSERT INTO Film VALUES
+    -> ('A10923','1941','Mystery, Drama','The Little Foxes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Film VALUES
+    -> ('B19413','1941','War Action','49th Parallel');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Award
+mysql> INSERT INTO Award VALUES
+    -> ('B11','Palme dOr','Most prestigious awards');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Award VALUES
+    -> ('C22','Oscar Award','The Academy Awards');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Festival
+mysql> INSERT INTO Festival VALUES
+    -> ('A11','Cannes Film Festival','1946-09-10','1946-10-05','Feance','Cannes','former Casinoof Cannes');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Festival VALUES
+    -> ('A22','The Oscars','1927-08-01','1928-07-31','USA','Los Angeles','Hollywood Roosevelt Hotel');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Participates
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234567','FFFF1946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1234555','FFFF1946','Actor');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111946','FFF21946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1111234','FFF21946','Actor');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('C1222946','FFF21946','Director');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('D1111954','FFF1954','Director');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> INSERT INTO Participates VALUES
+    -> ('E2233123','A10923','Director');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('EE223312','A10923','Writer');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('EEEE2345','A10923','Cinematograher');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Participates VALUES
+    -> ('QQP12345','B19413','Producer');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> -- Insert values to Received
+mysql> INSERT INTO Received VALUES
+    -> ('C1234567','FFFF1946','B11','1946','A11');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Received VALUES
+    -> ('C1111946','FFF21946','B11','1946','A11');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Received VALUES
+    -> ('C1111234','FFF21946','B11','1946','A11');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Received VALUES
+    -> ('C1222946','FFF21946','B11','1952','A11');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Received VALUES
+    -> ('D1111954','FFF1954','B11','1954','A11');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> INSERT INTO Received VALUES
+    -> ('E2233123','A10923','C22','1941','A22');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO Received VALUES
+    -> ('EE223312','A10923','C22','1941','A22');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
+mysql> SHOW TABLES;
++------------------------------+
+| Tables_in_Fujishima_21873542 |
++------------------------------+
+| Actor                        |
+| Award                        |
+| Festival                     |
+| Film                         |
+| Participates                 |
+| Person                       |
+| Received                     |
+| Worker                       |
++------------------------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Actor;
++----------+------------------+
+| PersonID | Agency           |
++----------+------------------+
+| C1111234 |                  |
+| C1234555 | Aubrey Blackburn |
+| PPE23455 | Starring         |
++----------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Award;
++---------+-------------+-------------------------+
+| AwardID | NameofAward | Details                 |
++---------+-------------+-------------------------+
+| B11     | Palme dOr   | Most prestigious awards |
+| C22     | Oscar Award | The Academy Awards      |
++---------+-------------+-------------------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Festival;
++---------+----------------------+------------+------------+------------------+---------------+---------------------------+
+| Fest_ID | FestName             | StartDate  | EndDate    | Location_Country | Location_City | Location_Venue            |
++---------+----------------------+------------+------------+------------------+---------------+---------------------------+
+| A11     | Cannes Film Festival | 1946-09-10 | 1946-10-05 | Feance           | Cannes        | former Casinoof Cannes    |
+| A22     | The Oscars           | 1927-08-01 | 1928-07-31 | USA              | Los Angeles   | Hollywood Roosevelt Hotel |
++---------+----------------------+------------+------------+------------------+---------------+---------------------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Film;
++----------+---------------+------------------+------------------+
+| FilmID   | YearOfRelease | Genre            | F_Name           |
++----------+---------------+------------------+------------------+
+| A10923   |          1941 | Mystery, Drama   | The Little Foxes |
+| B19413   |          1941 | War Action       | 49th Parallel    |
+| FFF1952  |          1952 | Historical Drama | Otherllo         |
+| FFF1954  |          1954 | Historical Drama | Gate of Hell     |
+| FFF21946 |          1946 | Romantic, Drama  | Brief Encounter  |
+| FFF31946 |          1946 | Psycho Drama     | The Lost Weekend |
+| FFFF1946 |          1946 | War,Drama        | The Last Chance  |
++----------+---------------+------------------+------------------+
+7 rows in set (0.01 sec)
+
+mysql> SELECT * FROM Participates;
++----------+----------+----------------+
+| PersonID | FilmID   | RoleType       |
++----------+----------+----------------+
+| E2233123 | A10923   | Director       |
+| EE223312 | A10923   | Writer         |
+| EEEE2345 | A10923   | Cinematograher |
+| QQP12345 | B19413   | Producer       |
+| D1111954 | FFF1954  | Director       |
+| C1111234 | FFF21946 | Actor          |
+| C1111946 | FFF21946 | Director       |
+| C1222946 | FFF21946 | Director       |
+| C1234555 | FFFF1946 | Actor          |
+| C1234567 | FFFF1946 | Director       |
++----------+----------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Person;
++----------+-----------+-----------+-------+
+| PersonID | LastName  | FirstName | Phone |
++----------+-----------+-----------+-------+
+| C1111234 | Rossi     | Lusia     |       |
+| C1111946 | Lindtberg | Leopold   |       |
+| C1222946 | Wilder    | Billy     |       |
+| C1234555 | Celia     | Johnson   |       |
+| C1234567 | Lean      | David     |       |
+| D1111954 | Kinugasa  | Teinosuke |       |
+| E2233123 | Wyler     | William   |       |
+| EE223312 | Hellman   | Lillian   |       |
+| EEEE2345 | Schafer   | Rudolph   |       |
+| PPE23455 | Ball      | Lucille   |       |
+| QQP12345 | Welles    | Orson     |       |
++----------+-----------+-----------+-------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Received;
++----------+----------+---------+-------+---------+
+| PersonID | FilmID   | AwardID | AYear | Fest_ID |
++----------+----------+---------+-------+---------+
+| E2233123 | A10923   | C22     |  1941 | A22     |
+| EE223312 | A10923   | C22     |  1941 | A22     |
+| D1111954 | FFF1954  | B11     |  1954 | A11     |
+| C1111234 | FFF21946 | B11     |  1946 | A11     |
+| C1111946 | FFF21946 | B11     |  1946 | A11     |
+| C1222946 | FFF21946 | B11     |  1952 | A11     |
+| C1234567 | FFFF1946 | B11     |  1946 | A11     |
++----------+----------+---------+-------+---------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Worker;
++------------------+----------+
+| JobTitle         | PersonID |
++------------------+----------+
+| Director         | C1111946 |
+| Director         | C1222946 |
+| Director         | C1234567 |
+| Director         | D1111954 |
+| Director         | E2233123 |
+| Writer           | EE223312 |
+| Cinematograpgher | EEEE2345 |
+| Producer         | QQP12345 |
++------------------+----------+
+8 rows in set (0.00 sec)
+
+mysql> Tee FinalWoring2.out
